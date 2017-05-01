@@ -41,7 +41,7 @@ script.on_configuration_changed( function(data)
       --Tech Addition
       if techs["battery-equipment"].researched then
         recipes["chargepack-small"].enabled=true
-        recipes["charging-station-normal"].enabled=true
+        recipes["charging-station"].enabled=true
       end
       if techs["battery-mk2-equipment"].researched then
         recipes["chargepack-large"].enabled=true

@@ -315,7 +315,7 @@ data:extend(
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    always_draw_idle_animation = true,
+    --always_draw_idle_animation = true,
     crafting_categories = {"charging-chargepack-normal"},
     result_inventory_size = 1,
     crafting_speed = 1,
@@ -345,6 +345,11 @@ data:extend(
       max_sounds_per_type = 5
     },
 
+    --module_specification =
+    --{
+    --  module_slots = 1
+    --},
+    --allowed_effects = { "speed", "pollution"},
 
     animation =
     {
@@ -487,7 +492,7 @@ data:extend(
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    always_draw_idle_animation = true,
+    --always_draw_idle_animation = true,
     crafting_categories = {"charging-chargepack-rapid"},
     result_inventory_size = 1,
     crafting_speed = 1,
@@ -517,7 +522,12 @@ data:extend(
       max_sounds_per_type = 5
     },
 
-
+    --module_specification =
+    --{
+    --  module_slots = 2
+    --},
+    --allowed_effects = { "speed", "pollution"},
+    
     animation =
     {
       layers = {
