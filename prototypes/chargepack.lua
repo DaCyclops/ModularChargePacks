@@ -2,6 +2,12 @@
 data:extend(
 {
   {
+    type = "item-subgroup",
+    name = "chargepacks",
+    group = "combat",
+    order = "p"
+  },
+  {
     type = "battery-equipment",
     name = "chargepack-small",
     sprite =
@@ -113,48 +119,52 @@ data:extend(
     type = "item",
     name = "chargepack-small",
     icon = "__ModularChargePacks__/graphics/icon-chargepack-small.png",
+    icon_size = 32,
     placed_as_equipment_result = "chargepack-small",
     flags = {"goes-to-main-inventory"},
-    subgroup = "equipment",
-    order = "c[battery2]-a[chargepack-small]",
-    stack_size = 10,
-    default_request_amount = 10
+    subgroup = "chargepacks",
+    order = "d[chargepack]-a[chargepack-1-small]",
+    stack_size = 20,
+    default_request_amount = 4
   },
 
   {
     type = "item",
     name = "chargepack-small-fullycharged",
     icon = "__ModularChargePacks__/graphics/icon-chargepack-small-fullycharged.png",
+    icon_size = 32,
     placed_as_equipment_result = "chargepack-small-fullycharged",
     flags = {"goes-to-main-inventory"},
-    subgroup = "equipment",
-    order = "c[battery2]-a[chargepack-small-fullycharged]",
-    stack_size = 10,
-    default_request_amount = 10
+    subgroup = "chargepacks",
+    order = "d[chargepack]-a[chargepack-1-small-fullycharged]",
+    stack_size = 20,
+    default_request_amount = 4
   },
 
    {
     type = "item",
     name = "chargepack-large",
     icon = "__ModularChargePacks__/graphics/icon-chargepack-large.png",
+    icon_size = 32,
     placed_as_equipment_result = "chargepack-large",
     flags = {"goes-to-main-inventory"},
-    subgroup = "equipment",
-    order = "c[battery2]-a[chargepack-large]",
-    stack_size = 10,
-    default_request_amount = 10
+    subgroup = "chargepacks",
+    order = "d[chargepack]-a[chargepack-2-large]",
+    stack_size = 20,
+    default_request_amount = 2
   },
 
   {
     type = "item",
     name = "chargepack-large-fullycharged",
     icon = "__ModularChargePacks__/graphics/icon-chargepack-large-fullycharged.png",
+    icon_size = 32,
     placed_as_equipment_result = "chargepack-large-fullycharged",
     flags = {"goes-to-main-inventory"},
-    subgroup = "equipment",
-    order = "c[battery2]-a[chargepack-large-fullycharged]",
-    stack_size = 10,
-    default_request_amount = 10
+    subgroup = "chargepacks",
+    order = "d[chargepack]-a[chargepack-2-large-fullycharged]",
+    stack_size = 20,
+    default_request_amount = 2
   },
 
   {
@@ -249,9 +259,10 @@ data:extend(
     type = "item",
     name = "charging-station",
     icon = "__ModularChargePacks__/graphics/icon-charging-station.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
-    subgroup = "production-machine",
-    order = "g[charging-station-normal]",
+    subgroup = "chargepacks",
+    order = "d[chargepack]-b[charging-station-normal]",
     place_result = "charging-station",
     stack_size = 10
   },
@@ -260,9 +271,10 @@ data:extend(
     type = "item",
     name = "charging-station-rapid",
     icon = "__ModularChargePacks__/graphics/icon-charging-station-rapid.png",
+    icon_size = 32,
     flags = {"goes-to-main-inventory"},
-    subgroup = "production-machine",
-    order = "g[charging-station-rapid]",
+    subgroup = "chargepacks",
+    order = "d[chargepack]-b[charging-station-rapid]",
     place_result = "charging-station-rapid",
     stack_size = 10
   },
@@ -300,6 +312,7 @@ data:extend(
     type = "furnace",
     name = "charging-station",
     icon = "__ModularChargePacks__/graphics/icon-charging-station.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "charging-station"},
     max_health = 350,
@@ -315,7 +328,7 @@ data:extend(
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    --always_draw_idle_animation = true,
+    always_draw_idle_animation = true,
     crafting_categories = {"charging-chargepack-normal"},
     result_inventory_size = 1,
     crafting_speed = 1,
@@ -326,7 +339,7 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-input",
       drain = "0.0kW",
-      emissions = 0.004
+      emissions = 0.04
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
@@ -345,11 +358,11 @@ data:extend(
       max_sounds_per_type = 5
     },
 
-    --module_specification =
-    --{
-    --  module_slots = 1
-    --},
-    --allowed_effects = { "speed", "pollution"},
+    module_specification =
+    {
+      module_slots = 1
+    },
+    allowed_effects = { "pollution", "speed", },
 
     animation =
     {
@@ -477,6 +490,7 @@ data:extend(
     type = "furnace",
     name = "charging-station-rapid",
     icon = "__ModularChargePacks__/graphics/icon-charging-station-rapid.png",
+    icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "charging-station-rapid"},
     max_health = 350,
@@ -492,7 +506,7 @@ data:extend(
     },
     collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
     selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
-    --always_draw_idle_animation = true,
+    always_draw_idle_animation = true,
     crafting_categories = {"charging-chargepack-rapid"},
     result_inventory_size = 1,
     crafting_speed = 1,
@@ -503,7 +517,7 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-input",
       drain = "0.0kW",
-      emissions = 0.008
+      emissions = 0.08
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
@@ -522,11 +536,11 @@ data:extend(
       max_sounds_per_type = 5
     },
 
-    --module_specification =
-    --{
-    --  module_slots = 2
-    --},
-    --allowed_effects = { "speed", "pollution"},
+    module_specification =
+    {
+      module_slots = 2
+    },
+    allowed_effects = { "pollution", "speed", },
     
     animation =
     {
@@ -660,6 +674,119 @@ data:extend(
     name = "charging-chargepack-rapid"
   },
 
+  -- Charge Capacitor Modules
+
+  {
+    type = "module-category",
+    name = "electrodes"
+  },
+  {
+    type = "module",
+    name = "chargepack-enhanced-electrodes-1",
+    icon = "__ModularChargePacks__/graphics/electrode-module-1.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "chargepacks",
+    category = "electrodes",
+    tier = 1,
+    order = "d[chargepack]-c[enhanced-electrodes-1]",
+    stack_size = 50,
+    default_request_amount = 10,
+    effect =
+    {
+      pollution = {bonus = 0.10},
+      speed = {bonus = -0.15},
+    },
+    limitation = {"chargepack-small-fullycharged-normal"
+                 ,"chargepack-large-fullycharged-normal"
+                 },
+    limitation_message_key = "enhanced-electrodes-only-in-normal-charger"
+  },
+  {
+    type = "module",
+    name = "chargepack-enhanced-electrodes-2",
+    icon = "__ModularChargePacks__/graphics/electrode-module-2.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "chargepacks",
+    category = "electrodes",
+    tier = 2,
+    order = "d[chargepack]-c[enhanced-electrodes-2]",
+    stack_size = 50,
+    default_request_amount = 10,
+    effect =
+    {
+      pollution = {bonus = 0.25},
+      speed = {bonus = -0.30}
+    },
+    limitation = {"chargepack-small-fullycharged-normal"
+                 ,"chargepack-large-fullycharged-normal"
+                 ,"chargepack-small-fullycharged-rapid"
+                 ,"chargepack-large-fullycharged-rapid"
+                 },
+    limitation_message_key = "enhanced-electrodes-only-in-rapid-charger"
+  },
+  {
+    type = "module",
+    name = "chargepack-enhanced-electrodes-3",
+    icon = "__ModularChargePacks__/graphics/electrode-module-3.png",
+    icon_size = 32,
+    flags = {"goes-to-main-inventory"},
+    subgroup = "chargepacks",
+    category = "electrodes",
+    tier = 3,
+    order = "d[chargepack]-c[enhanced-electrodes-3]",
+    stack_size = 50,
+    default_request_amount = 10,
+    effect =
+    {
+      pollution = {bonus = 0.50},
+      speed = {bonus = -0.40}
+    },
+    limitation = {"chargepack-small-fullycharged-normal"
+                 ,"chargepack-large-fullycharged-normal"
+                 ,"chargepack-small-fullycharged-rapid"
+                 ,"chargepack-large-fullycharged-rapid"
+                 },
+    limitation_message_key = "enhanced-electrodes-only-in-rapid-charger"
+  },
+  {
+    type = "recipe",
+    name = "chargepack-electrodes-1",
+    enabled = false,
+    ingredients =
+    {
+      {"accumulator", 1},
+      {"electronic-circuit", 10}
+    },
+    energy_required = 15,
+    result = "chargepack-enhanced-electrodes-1"
+  },
+  {
+    type = "recipe",
+    name = "chargepack-electrodes-2",
+    enabled = false,
+    ingredients =
+    {
+      {"chargepack-enhanced-electrodes-1", 2},
+      {"advanced-circuit", 10},
+    },
+    energy_required = 30,
+    result = "chargepack-enhanced-electrodes-2"
+  },
+  {
+    type = "recipe",
+    name = "chargepack-electrodes-3",
+    enabled = false,
+    ingredients =
+    {
+      {"chargepack-enhanced-electrodes-1", 1},
+      {"chargepack-enhanced-electrodes-2", 1},
+      {"processing-unit", 10}
+    },
+    energy_required = 45,
+    result = "chargepack-enhanced-electrodes-3"
+  },
   
 })
 
@@ -667,3 +794,6 @@ table.insert(data.raw["technology"]["battery-equipment"].effects,{type="unlock-r
 table.insert(data.raw["technology"]["battery-equipment"].effects,{type="unlock-recipe",recipe="charging-station"})
 table.insert(data.raw["technology"]["battery-mk2-equipment"].effects,{type="unlock-recipe",recipe="chargepack-large"})
 table.insert(data.raw["technology"]["battery-mk2-equipment"].effects,{type="unlock-recipe",recipe="charging-station-rapid"})
+table.insert(data.raw["technology"]["speed-module"].effects,{type="unlock-recipe",recipe="chargepack-electrodes-1"})
+table.insert(data.raw["technology"]["speed-module-2"].effects,{type="unlock-recipe",recipe="chargepack-electrodes-2"})
+table.insert(data.raw["technology"]["speed-module-3"].effects,{type="unlock-recipe",recipe="chargepack-electrodes-3"})

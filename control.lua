@@ -21,7 +21,19 @@ script.on_configuration_changed( function(data)
         recipes["chargepack-large"].enabled=true
         recipes["charging-station-rapid"].enabled=true
       end
+      if techs["speed-module"].researched then
+        recipes["chargepack-electrodes-1"].enabled=true
+      end
+      if techs["speed-module-2"].researched then
+        recipes["chargepack-electrodes-2"].enabled=true
+      end
+      if techs["speed-module-3"].researched then
+        recipes["chargepack-electrodes-3"].enabled=true
+      end
 
+      
+      
+      
     end     
 
 
