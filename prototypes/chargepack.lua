@@ -360,9 +360,10 @@ data:extend(
 
     module_specification =
     {
-      module_slots = 1
+      module_slots = 2,
+      module_info_icon_shift = {0, 0.8}
     },
-    allowed_effects = { "pollution", "speed", },
+    allowed_effects = {"speed", "pollution"},
 
     animation =
     {
@@ -695,7 +696,7 @@ data:extend(
     effect =
     {
       pollution = {bonus = 0.10},
-      speed = {bonus = -0.15},
+      speed = {bonus = 0.15},
     },
     limitation = {"chargepack-small-fullycharged-normal"
                  ,"chargepack-large-fullycharged-normal"
@@ -717,7 +718,7 @@ data:extend(
     effect =
     {
       pollution = {bonus = 0.25},
-      speed = {bonus = -0.30}
+      speed = {bonus = 0.30}
     },
     limitation = {"chargepack-small-fullycharged-normal"
                  ,"chargepack-large-fullycharged-normal"
@@ -741,7 +742,7 @@ data:extend(
     effect =
     {
       pollution = {bonus = 0.50},
-      speed = {bonus = -0.40}
+      speed = {bonus = 0.40}
     },
     limitation = {"chargepack-small-fullycharged-normal"
                  ,"chargepack-large-fullycharged-normal"
