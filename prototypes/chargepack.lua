@@ -339,7 +339,7 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-input",
       drain = "0.0kW",
-      emissions = 0.04
+      emissions = 0.004
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
@@ -518,7 +518,7 @@ data:extend(
       type = "electric",
       usage_priority = "secondary-input",
       drain = "0.0kW",
-      emissions = 0.08
+      emissions = 0.008
     },
     open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 },
     close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
