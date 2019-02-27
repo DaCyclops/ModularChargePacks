@@ -360,10 +360,10 @@ data:extend(
 
     module_specification =
     {
-      module_slots = 2,
+      module_slots = 0,
       module_info_icon_shift = {0, 0.8}
     },
-    allowed_effects = {"speed", "pollution"},
+    allowed_effects = {},
 
     animation =
     {
