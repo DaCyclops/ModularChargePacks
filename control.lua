@@ -83,7 +83,6 @@ script.on_event(defines.events.on_player_placed_equipment, function(event)
 
   if (event.equipment.name == 'chargepack-small-fullycharged' or event.equipment.name == 'chargepack-large-fullycharged') then
     
-
     local pname = string.sub(event.equipment.name, 1, -14)
     local ppos = event.equipment.position
     local gp = event.grid
