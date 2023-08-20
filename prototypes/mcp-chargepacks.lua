@@ -249,7 +249,24 @@ data:extend(
     },
     result = "chargepack-large-fullycharged",
     category = "charging-chargepack-rapid"
+  },
+  
+  {
+    type = "recipe",
+    name = "chargepack-large-fullycharged-overclocked",
+    enabled = true,
+    hidden = true,
+    energy_required = 8,
+    ingredients =
+    {
+      {"chargepack-large", 1}
+    },
+    result = "chargepack-large-fullycharged",
+    category = "charging-chargepack-overclocked"
   }
+
+
+
 })
 
 -- Add Recipes to Techs
