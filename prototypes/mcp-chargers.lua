@@ -13,7 +13,11 @@ data:extend(
     subgroup = "chargepacks",
     order = "d[chargepack]-b[charging-station-normal]",
     place_result = "charging-station",
-    stack_size = 10
+    stack_size = 10,
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    weight = 20*kg
   },
 
   {
@@ -25,7 +29,11 @@ data:extend(
     subgroup = "chargepacks",
     order = "d[chargepack]-b[charging-station-rapid]",
     place_result = "charging-station-rapid",
-    stack_size = 10
+    stack_size = 10,
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    weight = 20*kg
   },
 
   {
@@ -37,7 +45,11 @@ data:extend(
     subgroup = "chargepacks",
     order = "d[chargepack]-c[charging-station-overclocked]",
     place_result = "charging-station-overclocked",
-    stack_size = 10
+    stack_size = 10,
+    inventory_move_sound = item_sounds.electric_large_inventory_move,
+    pick_sound = item_sounds.electric_large_inventory_pickup,
+    drop_sound = item_sounds.electric_large_inventory_move,
+    weight = 20*kg
   },
   
   {
@@ -47,11 +59,11 @@ data:extend(
     energy_required = 7,
     ingredients =
     {
-      {"assembling-machine-2", 1},
-      {"accumulator", 4},
-      {"advanced-circuit", 8}
+      {type = "item", name = "assembling-machine-2", amount = 1},
+      {type = "item", name = "accumulator", amount = 4},
+      {type = "item", name = "advanced-circuit", amount = 8}
     },
-    result = "charging-station"
+    results = {{type="item", name="charging-station", amount=1}}
   },
   
   {
@@ -61,12 +73,12 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"assembling-machine-3", 1},
-      {"charging-station", 4},
-      {"processing-unit", 8},
-      {"copper-cable", 40}
+      {type = "item", name = "assembling-machine-3", amount = 1},
+      {type = "item", name = "charging-station", amount = 4},
+      {type = "item", name = "processing-unit", amount = 8},
+      {type = "item", name = "copper-cable", amount = 40}
     },
-    result = "charging-station-rapid"
+    results = {{type="item", name="charging-station-rapid", amount=1}}
   },
 
   {
@@ -76,11 +88,12 @@ data:extend(
     energy_required = 14,
     ingredients =
     {
-      {"charging-station-rapid", 4},
-      {"copper-cable", 100},
-      {"rocket-control-unit", 8}
+      {type = "item", name = "charging-station-rapid", amount = 4},
+      {type = "item", name = "copper-cable", amount = 100},
+      {type = "item", name = "processing-unit", amount = 4},
+      {type = "item", name = "speed-module-2", amount = 2}
     },
-    result = "charging-station-overclocked"
+    results = {{type="item", name="charging-station-overclocked", amount=1}}
   },
   
   {
@@ -130,138 +143,128 @@ data:extend(
         filename = "__base__/sound/accumulator-idle.ogg",
         volume = 0.3
       },
-      max_sounds_per_type = 5
+      max_sounds_per_type = 5,
+      audible_distance_modifier = 0.7,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
 
-    module_specification =
-    {
-      module_slots = 0,
-      module_info_icon_shift = {0, 0.8}
-    },
+    module_slots = 0,
     allowed_effects = {},
-
-    animation =
-    {
-      layers = {
-      {
-        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-base.png",
-        priority = "high",
-        width = 129,
-        height = 100,
-        frame_count = 1,
-        shift = {0.421875, 0},
-        tint = {r=0.5, g=0.5, b=0.8, a=1},
-        hr_version = {
-          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace.png",
-          priority = "high",
-          width = 239,
-          height = 219,
-          frame_count = 1,
-          shift = util.by_pixel(0.75, 5.75),
-          tint = {r=0.5, g=0.5, b=0.8, a=1},
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
-        priority = "high",
-        width = 129,
-        height = 100,
-        frame_count = 1,
-        shift = {0.421875, 0},
-        draw_as_shadow = true,
-        hr_version = {
-          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-shadow.png",
-          priority = "high",
-          width = 227,
-          height = 171,
-          frame_count = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(11.25, 7.75),
-          scale = 0.5
-        }
-      }
-      }
-    },
-    working_visualisations =
-    {
+    graphics_set =
       {
         animation =
         {
-          filename = "__ModularChargePacks__/graphics/charger-heater.png",
-          priority = "high",
-          width = 25,
-          height = 15,
-          frame_count = 12,
-          animation_speed = 0.4,
-          tint = {r=0.5, g=0.5, b=0.7, a=1},
-          shift = {0.015625, 0.890625},
-          
-          hr_version = {
-            filename = "__ModularChargePacks__/graphics/hr-charger-heater.png",
-            priority = "high",
-            width = 60,
-            height = 56,
-            frame_count = 12,
-            animation_speed = 0.4,
-            tint = {r=0.5, g=0.5, b=0.7, a=1},
-            shift = util.by_pixel(1.75, 32.75),
-            
-            scale = 0.5
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
+              priority = "high",
+              width = 239,
+              height = 219,
+              shift = util.by_pixel(0.75, 5.75),
+              scale = 0.5
+            },
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
+              priority = "high",
+              width = 227,
+              height = 171,
+              draw_as_shadow = true,
+              shift = util.by_pixel(11.25, 7.75),
+              scale = 0.5
+            }
           }
         },
-        light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}}
-      },
-      {
-        animation =
+        working_visualisations =
         {
-          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-1.png",
-          priority = "high",
-          width = 19,
-          height = 13,
-          frame_count = 4,
-          animation_speed = 0.4,
-          shift = {-0.671875, -0.640625},
-          
-          hr_version = {
-            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-1.png",
-            priority = "high",
-            width = 37,
-            height = 25,
-            frame_count = 4,
-            animation_speed = 0.4,
-            shift = util.by_pixel(-20.5, -18.5),
-            
-            scale = 0.5
+          {
+            fadeout = true,
+            animation =
+            {
+              layers =
+              {
+                {
+                  filename = "__ModularChargePacks__/graphics/hr-charger-heater.png",
+                  priority = "high",
+                  width = 60,
+                  height = 56,
+                  frame_count = 12,
+                  animation_speed = 0.4,
+                  tint = {r=0.5, g=0.5, b=0.7, a=1},
+                  shift = util.by_pixel(1.75, 32.75),
+                  scale = 0.5
+                },
+                {
+                  filename = "__base__/graphics/entity/electric-furnace/electric-furnace-light.png",
+                  blend_mode = "additive",
+                  width = 202,
+                  height = 202,
+                  repeat_count = 12,
+                  draw_as_glow = true,
+                  shift = util.by_pixel(1, 0),
+                  scale = 0.5,
+                },
+              }
+            },
+          },
+          {
+            fadeout = true,
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-ground-light.png",
+              blend_mode = "additive",
+              width = 166,
+              height = 124,
+              draw_as_light = true,
+              shift = util.by_pixel(3, 69),
+              scale = 0.5,
+            },
+          },
+          {
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-1.png",
+              priority = "high",
+              width = 37,
+              height = 25,
+              frame_count = 4,
+              animation_speed = 0.5,
+              shift = util.by_pixel(-20.5, -18.5),
+              scale = 0.5
+            }
+          },
+          {
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-2.png",
+              priority = "high",
+              width = 23,
+              height = 15,
+              frame_count = 4,
+              animation_speed = 0.5,
+              shift = util.by_pixel(3.5, -38),
+              scale = 0.5
+            }
           }
-        }
-      },
-      {
-        animation =
+        },
+        water_reflection =
         {
-          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-2.png",
-          priority = "high",
-          width = 12,
-          height = 9,
-          frame_count = 4,
-          animation_speed = 0.4,
-          shift = {0.0625, -1.234375},
-          
-          hr_version = {
-            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-2.png",
-            priority = "high",
-            width = 23,
-            height = 15,
-            frame_count = 4,
-            animation_speed = 0.4,
-            shift = util.by_pixel(3.5, -38),
-            
-            scale = 0.5
-          }
+          pictures =
+          {
+            filename = "__base__/graphics/entity/electric-furnace/electric-furnace-reflection.png",
+            priority = "extra-high",
+            width = 24,
+            height = 24,
+            shift = util.by_pixel(5, 40),
+            variation_count = 1,
+            scale = 5
+          },
+          rotate = false,
+          orientation_to_variation = false
         }
       }
-    }
-    
+
   },
 
   {
@@ -311,143 +314,128 @@ data:extend(
         filename = "__base__/sound/accumulator-idle.ogg",
         volume = 0.3
       },
-      max_sounds_per_type = 5
+      max_sounds_per_type = 5,
+      audible_distance_modifier = 0.7,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
 
-
-    module_specification =
-    {
-      module_slots = 0,
-      module_info_icon_shift = {0, 0.8}
-    },
+    module_slots = 0,
     allowed_effects = {},
-
-    -- module_specification =
-    -- {
-    --   module_slots = 2
-    -- },
-    -- allowed_effects = { "pollution", "speed", },
-    
-    animation =
-    {
-      layers = {
-      {
-        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-base.png",
-        priority = "high",
-        width = 129,
-        height = 100,
-        frame_count = 1,
-        shift = {0.421875, 0},
-        tint = {r=0.9, g=0.8, b=0.4, a=1},
-        hr_version = {
-          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace.png",
-          priority = "high",
-          width = 239,
-          height = 219,
-          frame_count = 1,
-          shift = util.by_pixel(0.75, 5.75),
-          tint = {r=0.9, g=0.8, b=0.4, a=1},
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
-        priority = "high",
-        width = 129,
-        height = 100,
-        frame_count = 1,
-        shift = {0.421875, 0},
-        draw_as_shadow = true,
-        hr_version = {
-          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-shadow.png",
-          priority = "high",
-          width = 227,
-          height = 171,
-          frame_count = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(11.25, 7.75),
-          scale = 0.5
-        }
-      }
-      }
-    },
-    working_visualisations =
-    {
+    graphics_set =
       {
         animation =
         {
-          filename = "__ModularChargePacks__/graphics/charger-heater.png",
-          priority = "high",
-          width = 25,
-          height = 15,
-          frame_count = 12,
-          animation_speed = 0.5,
-          tint = {r=0.7, g=0.7, b=0.9, a=1},
-          shift = {0.015625, 0.890625},
-          
-          hr_version = {
-            filename = "__ModularChargePacks__/graphics/hr-charger-heater.png",
-            priority = "high",
-            width = 60,
-            height = 56,
-            frame_count = 12,
-            animation_speed = 0.5,
-            tint = {r=0.7, g=0.7, b=0.9, a=1},
-            shift = util.by_pixel(1.75, 32.75),
-            scale = 0.5
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
+              priority = "high",
+              width = 239,
+              height = 219,
+              shift = util.by_pixel(0.75, 5.75),
+              tint = {r=0.9, g=0.8, b=0.4, a=1},
+              scale = 0.5
+            },
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
+              priority = "high",
+              width = 227,
+              height = 171,
+              draw_as_shadow = true,
+              shift = util.by_pixel(11.25, 7.75),
+              scale = 0.5
+            }
           }
         },
-        light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}}
-      },
-      {
-        animation =
+        working_visualisations =
         {
-          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-1.png",
-          priority = "high",
-          width = 19,
-          height = 13,
-          frame_count = 4,
-          animation_speed = 0.5,
-          shift = {-0.671875, -0.640625},
-          
-          hr_version = {
-            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-1.png",
-            priority = "high",
-            width = 37,
-            height = 25,
-            frame_count = 4,
-            animation_speed = 0.5,
-            shift = util.by_pixel(-20.5, -18.5),
-            
-            scale = 0.5
+          {
+            fadeout = true,
+            animation =
+            {
+              layers =
+              {
+                {
+                  filename = "__ModularChargePacks__/graphics/hr-charger-heater.png",
+                  priority = "high",
+                  width = 60,
+                  height = 56,
+                  frame_count = 12,
+                  animation_speed = 0.4,
+                  tint = {r=0.7, g=0.7, b=0.9, a=1},
+                  shift = util.by_pixel(1.75, 32.75),
+                  scale = 0.5
+                },
+                {
+                  filename = "__base__/graphics/entity/electric-furnace/electric-furnace-light.png",
+                  blend_mode = "additive",
+                  width = 202,
+                  height = 202,
+                  repeat_count = 12,
+                  draw_as_glow = true,
+                  shift = util.by_pixel(1, 0),
+                  scale = 0.5,
+                },
+              }
+            },
+          },
+          {
+            fadeout = true,
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-ground-light.png",
+              blend_mode = "additive",
+              width = 166,
+              height = 124,
+              draw_as_light = true,
+              shift = util.by_pixel(3, 69),
+              scale = 0.5,
+            },
+          },
+          {
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-1.png",
+              priority = "high",
+              width = 37,
+              height = 25,
+              frame_count = 4,
+              animation_speed = 0.5,
+              shift = util.by_pixel(-20.5, -18.5),
+              scale = 0.5
+            }
+          },
+          {
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-2.png",
+              priority = "high",
+              width = 23,
+              height = 15,
+              frame_count = 4,
+              animation_speed = 0.5,
+              shift = util.by_pixel(3.5, -38),
+              scale = 0.5
+            }
           }
-        }
-      },
-      {
-        animation =
+        },
+        water_reflection =
         {
-          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-2.png",
-          priority = "high",
-          width = 12,
-          height = 9,
-          frame_count = 4,
-          animation_speed = 0.5,
-          shift = {0.0625, -1.234375},
-          
-          hr_version = {
-            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-2.png",
-            priority = "high",
-            width = 23,
-            height = 15,
-            frame_count = 4,
-            animation_speed = 0.5,
-            shift = util.by_pixel(3.5, -38),
-            
-            scale = 0.5
-          }
+          pictures =
+          {
+            filename = "__base__/graphics/entity/electric-furnace/electric-furnace-reflection.png",
+            priority = "extra-high",
+            width = 24,
+            height = 24,
+            shift = util.by_pixel(5, 40),
+            variation_count = 1,
+            scale = 5
+          },
+          rotate = false,
+          orientation_to_variation = false
         }
       }
-    }
     
   },
 
@@ -498,144 +486,128 @@ data:extend(
         filename = "__base__/sound/accumulator-idle.ogg",
         volume = 0.3
       },
-      max_sounds_per_type = 5
+      max_sounds_per_type = 5,
+      audible_distance_modifier = 0.7,
+      fade_in_ticks = 4,
+      fade_out_ticks = 20
     },
 
-
-    module_specification =
-    {
-      module_slots = 0,
-      module_info_icon_shift = {0, 0.8}
-    },
+    module_slots = 0,
     allowed_effects = {},
-
-    -- module_specification =
-    -- {
-    --   module_slots = 2
-    -- },
-    -- allowed_effects = { "pollution", "speed", },
-    
-    animation =
-    {
-      layers = {
-      {
-        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-base.png",
-        priority = "high",
-        width = 129,
-        height = 100,
-        frame_count = 1,
-        shift = {0.421875, 0},
-        tint = {r=0.8, g=0.2, b=0.35, a=1},
-        hr_version = {
-          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace.png",
-          priority = "high",
-          width = 239,
-          height = 219,
-          frame_count = 1,
-          shift = util.by_pixel(0.75, 5.75),
-          tint = {r=0.8, g=0.2, b=0.35, a=1},
-          scale = 0.5
-        }
-      },
-      {
-        filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
-        priority = "high",
-        width = 129,
-        height = 100,
-        frame_count = 1,
-        shift = {0.421875, 0},
-        draw_as_shadow = true,
-        hr_version = {
-          filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-shadow.png",
-          priority = "high",
-          width = 227,
-          height = 171,
-          frame_count = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(11.25, 7.75),
-          scale = 0.5
-        }
-      }
-      }
-    },
-    working_visualisations =
-    {
+    graphics_set =
       {
         animation =
         {
-          filename = "__ModularChargePacks__/graphics/charger-heater.png",
-          priority = "high",
-          width = 25,
-          height = 15,
-          frame_count = 12,
-          animation_speed = 1,
-          tint = {r=1, g=1, b=1, a=1},
-          shift = {0.015625, 0.890625},
-          
-          hr_version = {
-            filename = "__ModularChargePacks__/graphics/hr-charger-heater.png",
-            priority = "high",
-            width = 60,
-            height = 56,
-            frame_count = 12,
-            animation_speed = 1,
-            tint = {r=1, g=1, b=1, a=1},
-            shift = util.by_pixel(1.75, 32.75),
-            
-            scale = 0.5
+          layers =
+          {
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace.png",
+              priority = "high",
+              width = 239,
+              height = 219,
+              shift = util.by_pixel(0.75, 5.75),
+              tint = {r=0.8, g=0.2, b=0.35, a=1},
+              scale = 0.5
+            },
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-shadow.png",
+              priority = "high",
+              width = 227,
+              height = 171,
+              draw_as_shadow = true,
+              shift = util.by_pixel(11.25, 7.75),
+              scale = 0.5
+            }
           }
         },
-        light = {intensity = 0.7, size = 7, color = {r = 1.0, g = 1.0, b = 1.0}}
-      },
-      {
-        animation =
+        working_visualisations =
         {
-          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-1.png",
-          priority = "high",
-          width = 19,
-          height = 13,
-          frame_count = 4,
-          animation_speed = 0.8,
-          shift = {-0.671875, -0.640625},
-          
-          hr_version = {
-            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-1.png",
-            priority = "high",
-            width = 37,
-            height = 25,
-            frame_count = 4,
-            animation_speed = 0.8,
-            shift = util.by_pixel(-20.5, -18.5),
-            
-            scale = 0.5
+          {
+            fadeout = true,
+            animation =
+            {
+              layers =
+              {
+                {
+                  filename = "__ModularChargePacks__/graphics/hr-charger-heater.png",
+                  priority = "high",
+                  width = 60,
+                  height = 56,
+                  frame_count = 12,
+                  animation_speed = 0.4,
+                  tint = {r=1, g=1, b=1, a=1},
+                  shift = util.by_pixel(1.75, 32.75),
+                  scale = 0.5
+                },
+                {
+                  filename = "__base__/graphics/entity/electric-furnace/electric-furnace-light.png",
+                  blend_mode = "additive",
+                  width = 202,
+                  height = 202,
+                  repeat_count = 12,
+                  draw_as_glow = true,
+                  shift = util.by_pixel(1, 0),
+                  scale = 0.5,
+                },
+              }
+            },
+          },
+          {
+            fadeout = true,
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-ground-light.png",
+              blend_mode = "additive",
+              width = 166,
+              height = 124,
+              draw_as_light = true,
+              shift = util.by_pixel(3, 69),
+              scale = 0.5,
+            },
+          },
+          {
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-1.png",
+              priority = "high",
+              width = 37,
+              height = 25,
+              frame_count = 4,
+              animation_speed = 0.5,
+              shift = util.by_pixel(-20.5, -18.5),
+              scale = 0.5
+            }
+          },
+          {
+            animation =
+            {
+              filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-2.png",
+              priority = "high",
+              width = 23,
+              height = 15,
+              frame_count = 4,
+              animation_speed = 0.5,
+              shift = util.by_pixel(3.5, -38),
+              scale = 0.5
+            }
           }
-        }
-      },
-      {
-        animation =
+        },
+        water_reflection =
         {
-          filename = "__base__/graphics/entity/electric-furnace/electric-furnace-propeller-2.png",
-          priority = "high",
-          width = 12,
-          height = 9,
-          frame_count = 4,
-          animation_speed = 0.8,
-          shift = {0.0625, -1.234375},
-          
-          hr_version = {
-            filename = "__base__/graphics/entity/electric-furnace/hr-electric-furnace-propeller-2.png",
-            priority = "high",
-            width = 23,
-            height = 15,
-            frame_count = 4,
-            animation_speed = 0.8,
-            shift = util.by_pixel(3.5, -38),
-            
-            scale = 0.5
-          }
+          pictures =
+          {
+            filename = "__base__/graphics/entity/electric-furnace/electric-furnace-reflection.png",
+            priority = "extra-high",
+            width = 24,
+            height = 24,
+            shift = util.by_pixel(5, 40),
+            variation_count = 1,
+            scale = 5
+          },
+          rotate = false,
+          orientation_to_variation = false
         }
       }
-    }
     
   },
 
@@ -658,7 +630,7 @@ data:extend(
 -- Add Recipes to Techs
 table.insert(data.raw["technology"]["battery-equipment"].effects,{type="unlock-recipe",recipe="charging-station"})
 table.insert(data.raw["technology"]["battery-mk2-equipment"].effects,{type="unlock-recipe",recipe="charging-station-rapid"})
-table.insert(data.raw["technology"]["rocket-control-unit"].effects,{type="unlock-recipe",recipe="charging-station-overclocked"})
+table.insert(data.raw["technology"]["speed-module-2"].effects,{type="unlock-recipe",recipe="charging-station-overclocked"})
 -- SE Compatibility (Thanks SkYY0x )
 data.raw["furnace"]["charging-station"].se_allow_in_space = true
 data.raw["furnace"]["charging-station-rapid"].se_allow_in_space = true

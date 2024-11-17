@@ -21,7 +21,7 @@ script.on_configuration_changed( function(data)
         recipes["chargepack-large"].enabled=true
         recipes["charging-station-rapid"].enabled=true
       end
-      if techs["rocket-control-unit"].researched then
+      if techs["speed-module-2"].researched then
         recipes["charging-station-overclocked"].enabled=true
       end
       --  if techs["speed-module"].researched then
@@ -56,7 +56,7 @@ script.on_configuration_changed( function(data)
         recipes["chargepack-large"].enabled=true
         recipes["charging-station-rapid"].enabled=true
       end
-      if techs["rocket-control-unit"].researched then
+      if techs["speed-module-2"].researched then
         recipes["charging-station-overclocked"].enabled=true
       end
       -- if techs["speed-module"].researched then

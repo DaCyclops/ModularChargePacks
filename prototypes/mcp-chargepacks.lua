@@ -27,7 +27,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "36MJ",
-      input_flow_limit = "0MW",
+      input_flow_limit = "0",
       output_flow_limit = "5MW",
       usage_priority = "primary-output"
     },
@@ -54,7 +54,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "36MJ",
-      input_flow_limit = "0MW",
+      input_flow_limit = "0",
       output_flow_limit = "5MW",
       usage_priority = "primary-output"
     },
@@ -81,7 +81,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "350MJ",
-      input_flow_limit = "0MW",
+      input_flow_limit = "0",
       output_flow_limit = "15MW",
       usage_priority = "primary-output"
     },
@@ -108,7 +108,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "350MJ",
-      input_flow_limit = "0MW",
+      input_flow_limit = "0",
       output_flow_limit = "15MW",
       usage_priority = "primary-output"
     },
@@ -120,12 +120,16 @@ data:extend(
     name = "chargepack-small",
     icon = "__ModularChargePacks__/graphics/icon-chargepack-small.png",
     icon_size = 32,
-    placed_as_equipment_result = "chargepack-small",
+    place_as_equipment_result = "chargepack-small",
     flags = {},
     subgroup = "chargepacks",
     order = "d[chargepack]-a[chargepack-1-small]",
     stack_size = 20,
-    default_request_amount = 4
+    default_request_amount = 4,
+    weight = 5 * kg,
+    inventory_move_sound = item_sounds.electric_small_inventory_move,
+    pick_sound = item_sounds.electric_small_inventory_pickup,
+    drop_sound = item_sounds.electric_small_inventory_move
   },
 
   {
@@ -133,12 +137,16 @@ data:extend(
     name = "chargepack-small-fullycharged",
     icon = "__ModularChargePacks__/graphics/icon-chargepack-small-fullycharged.png",
     icon_size = 32,
-    placed_as_equipment_result = "chargepack-small-fullycharged",
+    place_as_equipment_result = "chargepack-small-fullycharged",
     flags = {},
     subgroup = "chargepacks",
     order = "d[chargepack]-a[chargepack-1-small-fullycharged]",
     stack_size = 20,
-    default_request_amount = 4
+    default_request_amount = 4,
+    weight = 5 * kg,
+    inventory_move_sound = item_sounds.electric_small_inventory_move,
+    pick_sound = item_sounds.electric_small_inventory_pickup,
+    drop_sound = item_sounds.electric_small_inventory_move
   },
 
    {
@@ -146,12 +154,16 @@ data:extend(
     name = "chargepack-large",
     icon = "__ModularChargePacks__/graphics/icon-chargepack-large.png",
     icon_size = 32,
-    placed_as_equipment_result = "chargepack-large",
+    place_as_equipment_result = "chargepack-large",
     flags = {},
     subgroup = "chargepacks",
     order = "d[chargepack]-a[chargepack-2-large]",
     stack_size = 20,
-    default_request_amount = 2
+    default_request_amount = 2,
+    weight = 10 * kg,
+    inventory_move_sound = item_sounds.electric_small_inventory_move,
+    pick_sound = item_sounds.electric_small_inventory_pickup,
+    drop_sound = item_sounds.electric_small_inventory_move
   },
 
   {
@@ -159,12 +171,16 @@ data:extend(
     name = "chargepack-large-fullycharged",
     icon = "__ModularChargePacks__/graphics/icon-chargepack-large-fullycharged.png",
     icon_size = 32,
-    placed_as_equipment_result = "chargepack-large-fullycharged",
+    place_as_equipment_result = "chargepack-large-fullycharged",
     flags = {},
     subgroup = "chargepacks",
     order = "d[chargepack]-a[chargepack-2-large-fullycharged]",
     stack_size = 20,
-    default_request_amount = 2
+    default_request_amount = 2,
+    weight = 10 * kg,
+    inventory_move_sound = item_sounds.electric_small_inventory_move,
+    pick_sound = item_sounds.electric_small_inventory_pickup,
+    drop_sound = item_sounds.electric_small_inventory_move
   },
 
   {
@@ -174,11 +190,11 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"battery-equipment", 2},
-      {"advanced-circuit", 4},
-      {"copper-cable", 8}
+      {type = "item", name = "battery-equipment", amount = 2},
+      {type = "item", name = "advanced-circuit", amount = 4},
+      {type = "item", name = "copper-cable", amount = 8}
     },
-    result = "chargepack-small"
+    results = {{type="item", name="chargepack-small", amount=1}}
   },
   
   {
@@ -188,11 +204,11 @@ data:extend(
     energy_required = 10,
     ingredients =
     {
-      {"battery-mk2-equipment", 4},
-      {"advanced-circuit", 8},
-      {"copper-cable", 18}
+      {type = "item", name = "battery-mk2-equipment", amount = 4},
+      {type = "item", name = "advanced-circuit", amount = 8},
+      {type = "item", name = "copper-cable", amount = 18}
     },
-    result = "chargepack-large"
+    results = {{type="item", name="chargepack-large", amount=1}}
   },
 
   {
@@ -203,9 +219,9 @@ data:extend(
     energy_required = 13,
     ingredients =
     {
-      {"chargepack-small", 1}
+      {type = "item", name = "chargepack-small", amount = 1}
     },
-    result = "chargepack-small-fullycharged",
+    results = {{type="item", name="chargepack-small-fullycharged", amount=1}},
     category = "charging-chargepack-normal"
   },
   
@@ -217,9 +233,9 @@ data:extend(
     energy_required = 126,
     ingredients =
     {
-      {"chargepack-large", 1}
+      {type = "item", name = "chargepack-large", amount = 1}
     },
-    result = "chargepack-large-fullycharged",
+    results = {{type="item", name="chargepack-large-fullycharged", amount=1}},
     category = "charging-chargepack-normal"
   },
 
@@ -231,9 +247,9 @@ data:extend(
     energy_required = 3.2,
     ingredients =
     {
-      {"chargepack-small", 1}
+      {type = "item", name = "chargepack-small", amount = 1}
     },
-    result = "chargepack-small-fullycharged",
+    results = {{type="item", name="chargepack-small-fullycharged", amount=1}},
     category = "charging-chargepack-rapid"
   },
   
@@ -245,9 +261,9 @@ data:extend(
     energy_required = 30,
     ingredients =
     {
-      {"chargepack-large", 1}
+      {type = "item", name = "chargepack-large", amount = 1}
     },
-    result = "chargepack-large-fullycharged",
+    results = {{type="item", name="chargepack-large-fullycharged", amount=1}},
     category = "charging-chargepack-rapid"
   },
   
@@ -259,9 +275,9 @@ data:extend(
     energy_required = 8,
     ingredients =
     {
-      {"chargepack-large", 1}
+      {type = "item", name = "chargepack-large", amount = 1}
     },
-    result = "chargepack-large-fullycharged",
+    results = {{type="item", name="chargepack-large-fullycharged", amount=1}},
     category = "charging-chargepack-overclocked"
   }
 
