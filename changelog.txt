@@ -1,4 +1,4 @@
-Version: 2.0.1
+Version: 2.0.3
 Date: 15. 03. 2026
   Bugfix:
     - Finally remembered to fix mod to work with Quality. Took my time...
@@ -7,6 +7,11 @@ Date: 15. 03. 2026
     - Moved graphics around for easier deployment in future
   Info:
     - Added Changelog
+---------------------------------------------------------------------------------------------------
+Version: 2.0.2
+Date: 20. 11. 2025
+  Info:
+    - Not fully sure, as I apparently didnt push to Github. 
 ---------------------------------------------------------------------------------------------------
 Version: 2.0.0
 Date: 17. 11. 2024
