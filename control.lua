@@ -95,12 +95,13 @@ script.on_event(defines.events.on_player_placed_equipment, function(event)
     
     local pname = string.sub(event.equipment.name, 1, -14)
     local ppos = event.equipment.position
+    local pqual = event.equipment.quality
     local gp = event.grid
   
     local discard = gp.take{position=ppos}
     discard=nil
-    gp.put{name=pname,position=ppos}
-    gp.get(ppos).energy = gp.get(ppos).max_energy
+    local eq = gp.put{name=pname,position=ppos,quality=pqual}
+    eq.energy = eq.max_energy
 
     end
     

@@ -1,0 +1,81 @@
+Version: 2.0.1
+Date: 15. 03. 2026
+  Bugfix:
+    - Finally remembered to fix mod to work with Quality. Took my time...
+      Quality charge packs will no longer revert to normal quality when inserted.
+  Graphics:
+    - Moved graphics around for easier deployment in future
+  Info:
+    - Added Changelog
+---------------------------------------------------------------------------------------------------
+Version: 2.0.0
+Date: 17. 11. 2024
+  Compatibility:
+    - Updated for Factorio 2.0
+    - Replaced removed items with other items
+    - fixed changed properties
+    - added interact sounds and rocket weights
+    - updated entity animations to new format
+  Bugfix:
+    - adjusted all recipes to use full-details not the shorthand, as the shorthand causes issues with Quality module enabled
+      NOTE: support for Quality is still incomplete. It just doesnt blow up.
+---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 20. 08. 2023
+  Compatibility:
+    - Added Space Exploration compatibility (thank you SkYY0x)
+  Feature:
+    - Added Overclocked Charging Station. 4 times faster, but only for Large Charge Packs.
+  Changes:
+    - Refactored prototypes
+    - Disabled Electrodes in code (I shouldn't be leaving unmakeable items enabled)
+      (as it is right now, electrodes dont work as planned - they basically give free power when charging. I'm considering how to make them work, but lets not make it look like they work)
+    - Slightly adjusted Charging Station stats
+    - Slightly adjusted Charging Station recipes
+  Graphics:
+    - Adjusted animations and colors to differentiate looks between different tiers of charging station
+  Locale:
+    - Fixed some locale strings
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 22. 05. 2023
+  Compatibility:
+    - Updated for Factorio 1.1
+---------------------------------------------------------------------------------------------------
+Version: 0.18.0
+Date: 17. 08. 2020
+  Compatibility:
+    - Updated for Factorio 0.18
+---------------------------------------------------------------------------------------------------
+Version: 0.17.2
+Date: 28. 02. 2019
+  Graphics:
+    - Updated Thumbnail logo
+---------------------------------------------------------------------------------------------------
+Version: 0.17.1
+Date: 27. 02. 2019
+  Compatibility:
+    - Updated for Factorio 0.17
+  Bugfix:
+    - Removed unusable module slots from Charging Station
+  Graphics:
+    - Added Thumbnail logo
+---------------------------------------------------------------------------------------------------
+Version: 0.16.1
+Date: 26. 12. 2017
+  Compatibility:
+    - Updated for Factorio 0.16
+  Feature:
+    - Adds "Electrodes" modules to speed up charging (not functional yet)
+---------------------------------------------------------------------------------------------------
+Version: 0.15.2
+Date: 01. 05. 2017
+  Bugfix:
+    - Was going to enable Speed and Polution effects modules, but it wouldnt do much in base, because Speed Modules have increased power not increased polution....
+    - Fixed updating mods would cause crash because I mis-named something
+---------------------------------------------------------------------------------------------------
+Version: 0.15.1
+Date: 29. 04. 2017
+  Compatibility:
+    - Initial Version for Factorio 0.15
+
