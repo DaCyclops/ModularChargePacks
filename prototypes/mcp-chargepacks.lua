@@ -1,3 +1,4 @@
+local item_sounds = require("__base__.prototypes.item_sounds")
 
 data:extend(
 {
@@ -27,7 +28,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "36MJ",
-      input_flow_limit = "0",
+      input_flow_limit = "0MW",
       output_flow_limit = "5MW",
       usage_priority = "primary-output"
     },
@@ -54,7 +55,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "36MJ",
-      input_flow_limit = "0",
+      input_flow_limit = "0MW",
       output_flow_limit = "5MW",
       usage_priority = "primary-output"
     },
@@ -81,7 +82,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "350MJ",
-      input_flow_limit = "0",
+      input_flow_limit = "0MW",
       output_flow_limit = "15MW",
       usage_priority = "primary-output"
     },
@@ -108,7 +109,7 @@ data:extend(
     {
       type = "electric",
       buffer_capacity = "350MJ",
-      input_flow_limit = "0",
+      input_flow_limit = "0MW",
       output_flow_limit = "15MW",
       usage_priority = "primary-output"
     },
