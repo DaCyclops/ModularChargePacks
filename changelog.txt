@@ -1,3 +1,11 @@
+Version: 2.1.0
+Date: 25. 06. 2026
+  Compatibility:
+    - Updated for Factorio 2.1
+    - fixed changed properties
+  Locale:
+    - Fixed missing recipe-name locale strings
+---------------------------------------------------------------------------------------------------
 Version: 2.0.3
 Date: 15. 03. 2026
   Bugfix:

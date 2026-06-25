@@ -1,11 +1,11 @@
 {
   "name": "ModularChargePacks",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "title": "Modular Charge Packs",
   "author": "DaCyclops",
   "homepage": "",
   "contact": "dacyclops@dacyclops.com",
   "description": "Adds exchangeable battery packs that can be used to power your modular equipment",
-  "factorio_version":"2.0",
+  "factorio_version":"2.1",
   "dependencies": []
 }

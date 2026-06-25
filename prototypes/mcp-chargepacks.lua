@@ -223,7 +223,7 @@ data:extend(
       {type = "item", name = "chargepack-small", amount = 1}
     },
     results = {{type="item", name="chargepack-small-fullycharged", amount=1}},
-    category = "charging-chargepack-normal"
+    categories = {"charging-chargepack-normal"}
   },
   
   {
@@ -237,7 +237,7 @@ data:extend(
       {type = "item", name = "chargepack-large", amount = 1}
     },
     results = {{type="item", name="chargepack-large-fullycharged", amount=1}},
-    category = "charging-chargepack-normal"
+    categories = {"charging-chargepack-normal"}
   },
 
     {
@@ -251,7 +251,7 @@ data:extend(
       {type = "item", name = "chargepack-small", amount = 1}
     },
     results = {{type="item", name="chargepack-small-fullycharged", amount=1}},
-    category = "charging-chargepack-rapid"
+    categories = {"charging-chargepack-rapid"}
   },
   
   {
@@ -265,7 +265,7 @@ data:extend(
       {type = "item", name = "chargepack-large", amount = 1}
     },
     results = {{type="item", name="chargepack-large-fullycharged", amount=1}},
-    category = "charging-chargepack-rapid"
+    categories = {"charging-chargepack-rapid"}
   },
   
   {
@@ -279,7 +279,7 @@ data:extend(
       {type = "item", name = "chargepack-large", amount = 1}
     },
     results = {{type="item", name="chargepack-large-fullycharged", amount=1}},
-    category = "charging-chargepack-overclocked"
+    categories = {"charging-chargepack-overclocked"}
   }
 
 
